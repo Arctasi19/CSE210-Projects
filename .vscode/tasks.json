@@ -6,7 +6,7 @@
         {
             "label": "build-sandbox-Sandbox",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/sandbox/Sandbox/Sandbox.csproj",
@@ -19,7 +19,7 @@
         {
             "label": "build-csharp-prep-Prep1",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/csharp-prep/Prep1/Prep1.csproj",
@@ -32,7 +32,7 @@
         {
             "label": "build-csharp-prep-Prep2",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/csharp-prep/Prep2/Prep2.csproj",
@@ -45,7 +45,7 @@
         {
             "label": "build-csharp-prep-Prep3",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/csharp-prep/Prep3/Prep3.csproj",
@@ -58,7 +58,7 @@
         {
             "label": "build-csharp-prep-Prep4",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/csharp-prep/Prep4/Prep4.csproj",
@@ -71,7 +71,7 @@
         {
             "label": "build-csharp-prep-Prep5",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/csharp-prep/Prep5/Prep5.csproj",
@@ -84,7 +84,7 @@
         {
             "label": "build-prepare-Learning02",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prepare/Learning02/Learning02.csproj",
@@ -97,7 +97,7 @@
         {
             "label": "build-prepare-Learning03",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prepare/Learning03/Learning03.csproj",
@@ -110,7 +110,7 @@
         {
             "label": "build-prepare-Learning04",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prepare/Learning04/Learning04.csproj",
@@ -123,7 +123,7 @@
         {
             "label": "build-prepare-Learning05",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prepare/Learning05/Learning05.csproj",
@@ -136,7 +136,7 @@
         {
             "label": "build-prove-Develop02",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prove/Develop02/Develop02.csproj",
@@ -149,7 +149,7 @@
         {
             "label": "build-prove-Develop03",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prove/Develop03/Develop03.csproj",
@@ -162,7 +162,7 @@
         {
             "label": "build-prove-Develop04",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prove/Develop04/Develop04.csproj",
@@ -175,7 +175,7 @@
         {
             "label": "build-prove-Develop05",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/prove/Develop05/Develop05.csproj",
@@ -188,7 +188,7 @@
         {
             "label": "build-final-FinalProject",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/final/FinalProject/FinalProject.csproj",
@@ -201,7 +201,7 @@
         {
             "label": "build-final-Foundation1",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/final/Foundation1/Foundation1.csproj",
@@ -214,7 +214,7 @@
         {
             "label": "build-final-Foundation2",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/final/Foundation2/Foundation2.csproj",
@@ -227,7 +227,7 @@
         {
             "label": "build-final-Foundation3",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/final/Foundation3/Foundation3.csproj",
@@ -240,7 +240,7 @@
         {
             "label": "build-final-Foundation4",
             "command": "dotnet",
-            "type": "process",
+            "type": "shell",
             "args": [
                 "build",
                 "${workspaceFolder}/final/Foundation4/Foundation4.csproj",
