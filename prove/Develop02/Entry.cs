@@ -10,5 +10,6 @@ public class Entry
         Console.WriteLine($"Date: {this._date}");
         Console.WriteLine($"Prompt: {this._promptText}");
         Console.WriteLine($"Entry: \n{this._entryText}");
+        Console.WriteLine($"Mood: \n{this._mood}");
     }
 }
