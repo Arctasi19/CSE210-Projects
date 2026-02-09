@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualBasic;
 
 public class ScriptureGenerator
 {
