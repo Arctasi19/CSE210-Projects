@@ -7,12 +7,23 @@ public class Scripture
     public Scripture(string verse, Reference reference)
     {
         _reference = reference;
-        _words = verse.Split(' ').Select(w => new Word(w)).ToList();
+        _words = new List<Word>();
+        foreach (string w in verse.Split(' '))
+        {
+            _words.Add(new Word(w));
+        }
     }
 
     public void HideRandomWords(int count = 3)
     {
-        var visibleWords = _words.Where(w => !w.IsHidden()).ToList();
+        List<Word> visibleWords = new List<Word>();
+        foreach (Word w in _words)
+        {
+            if (!w.IsHidden())
+            {
+                visibleWords.Add(w);
+            }
+        }
         
         for (int i = 0; i < count && visibleWords.Count > 0; i++)
         {
@@ -30,5 +41,12 @@ public class Scripture
         Console.WriteLine("\nPress Enter to hide words, or type 'quit' to exit.");
     }
 
-    public bool AllHidden() => _words.All(w => w.IsHidden());
+    public bool AllHidden()
+    {
+        foreach (Word w in _words)
+        {
+            if(!w.IsHidden()) return false;
+        }
+        return true;
+    }
 }

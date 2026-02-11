@@ -8,8 +8,14 @@ public class Word
         _word = word;
     }
 
-    public void Hide() => _hidden_status = false;
-    public bool IsHidden() => !_hidden_status;
+    public void Hide()
+    {
+        _hidden_status = false;
+    }
+    public bool IsHidden()
+    {
+        return !_hidden_status;
+    }
 
     public string Display()
     {
