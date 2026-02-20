@@ -37,7 +37,13 @@ public class Scripture
     {
         Console.Clear();
         Console.WriteLine($"{_reference.Display()}");
-        Console.WriteLine(string.Join(" ", _words.Select(w => w.Display())));
+        List<string> displayWords = new List<string>();
+        foreach (Word w in _words)
+        {
+            displayWords.Add(w.Display());
+        }
+        string scriptureFull = string.Join(" ", displayWords);
+        Console.WriteLine(scriptureFull);
         Console.WriteLine("\nPress Enter to hide words, or type 'quit' to exit.");
     }
 
