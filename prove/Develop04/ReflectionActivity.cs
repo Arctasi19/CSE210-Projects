@@ -20,29 +20,33 @@ class ReflectionActivity : Activity
     public ReflectionActivity() : base(
         "Reflecting Activity",
         "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life."
-    )
+    ) //Constructor
     {
         
     }
-    public void Run()
+    public void Run() //Core Program
     {
+        //Starts program
         StartMessage();
         Console.WriteLine("Get Ready...\n");
         PauseSpinner(5);
         Console.Clear();
 
-        Console.WriteLine("Consider the following prompt:\n");
+        //Displays Prompt and waits for user confirmation
+        Console.WriteLine("Consider the following prompt:\n"); 
         string prompt = GetRandomString(_promptsList);
         Console.WriteLine($"--- {prompt} ---\n");
         Console.WriteLine("When you have something in mind, press enter to continue.");
         Console.ReadLine();
         Console.Clear();
 
+        //Final preparation timer
         Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
         Console.Write("You may begin in...");
         PauseTimer(3);
         Console.WriteLine();
 
+        //Displays questions to further user thoughtfulness until time has run out
         int duration = GetDuration();
         int timer = duration * 1000;
         while (timer > 0)
@@ -52,6 +56,8 @@ class ReflectionActivity : Activity
             PauseSpinner(10);
             timer -= 10000;
         }
+
+        //Ends program with the common End Message
         EndMessage();
     }
 }

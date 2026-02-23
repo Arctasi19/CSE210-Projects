@@ -11,17 +11,19 @@ class StretchingActivity : Activity
     public StretchingActivity() : base(
         "Stretching Activity",
         "This activity will help you relax by taking you through a few stretching exercises that can be done standing or sitting."
-    )
+    ) //Constructor
     {
         
     }
-    public void Run()
+    public void Run() //Core Program
     {
+        //Starts Program
         StartMessage();
         Console.WriteLine("If you can, stand up! If not, that's okay.");
         Console.WriteLine("Get Ready To Stretch...\n");
         PauseSpinner(5);
         
+        //Runs a loop of randomized stretching prompts until time has run out.
         int duration = GetDuration();
         int timer = duration * 1000;
         while (timer > 0)
@@ -33,7 +35,8 @@ class StretchingActivity : Activity
             Console.WriteLine("\n");
             timer -= 10000;
         }
-        Console.Clear();
+
+        //Ends program with common end message
         EndMessage();
     }
 }

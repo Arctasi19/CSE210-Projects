@@ -7,9 +7,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Clear();
+        Console.Clear(); //Clear the terminal for fresh start
         int userChoice = -1;
-        while (userChoice != 5)
+        while (userChoice != 5) //provides menu options
         {
             Console.WriteLine("\nPlease select one of the following choices:");
             Console.WriteLine("1. Breathing Activity");
@@ -19,8 +19,9 @@ class Program
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
 
-            userChoice = int.Parse(Console.ReadLine());
+            userChoice = int.Parse(Console.ReadLine()); //retrieves user input
 
+            //BELOW - matches user input to an activity. If not found, the loop will simply run again, prompting them once more.
             if (userChoice == 1) //Breathing Activity
             {
                 BreathingActivity breathing = new BreathingActivity();

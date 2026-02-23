@@ -14,30 +14,35 @@ class ListingActivity : Activity
     public ListingActivity() : base(
         "Listing Activity",
         "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."
-    )
-    {
+    ) //Constructor
+    { 
         
     }
-    public void Run()
+    public void Run() //Core Program
     {
+        //Starts program
         StartMessage();
         Console.WriteLine("Get Ready...\n");
         PauseSpinner(5);
 
+        //provides randomized prompt to user
         Console.WriteLine("List as many responses as you can to the following prompt:");
         string prompt = GetRandomString(_prompts);
         Console.WriteLine($"--- {prompt} ---\n");
 
+        //final preparation countdown
         Console.Write("You may begin in...");
         PauseTimer(5);
         Console.WriteLine();
         
+        //Runs GetListFromUser and displays how many items the user counted
         GetListFromUser();
         Console.WriteLine($"You listed {_count} items!\n");
 
+        //Ends program with common end message
         EndMessage();
     }
-    private void GetListFromUser()
+    private void GetListFromUser() //Gets a list from the user and updates the _count value with the length of the retrieved list.
     {
         List<string> userList = new List<string> {};
 
