@@ -8,7 +8,7 @@ class Activity
         _activityName = activityName;
         _activityDescription = activityDescription;
     }
-    public int GetDuration() //THIS MAY NOT BE NEEDED !!
+    public int GetDuration()
     {
         return _activityDuration;
     }
@@ -56,13 +56,23 @@ class Activity
     }
     public void PauseTimer(int pauseDuration)
     {
-        int timer = pauseDuration * 1000;
+        int internaTimer = pauseDuration * 1000;
         for (int i = pauseDuration; i > 0; i--)
         {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-            timer -= 1000;
+            if (i >= 10)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b\b  \b\b");
+                internaTimer -= 1000;
+            }
+            else
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+                internaTimer -= 1000;
+            }
         }
     }
     public string GetRandomString(List<string> prompts)
