@@ -16,11 +16,18 @@ public class CheckListGoal : Goal
         _timesCompleted = timesCompleted;
         _isComplete = isComplete;
     }
-    public override int RecordEvent() //TODO
+    public override int RecordEvent()
     {
-        if (_timesCompleted >= _targetAmount)
+        _timesCompleted += 1;
+        if (_timesCompleted == _targetAmount)
+        {
             IsComplete();
-        return _goalValue;
+            return _goalValue + _goalBonusPoints;
+        } 
+        else
+        {
+            return _goalValue;
+        }
     }
     public override void IsComplete()
     {
@@ -29,5 +36,13 @@ public class CheckListGoal : Goal
     public override string GetStringRepresentation()
     {
         return $"ChecklistGoal:{_goalName}|{_goalDescription}|{_goalValue}|{_isComplete}|{_goalBonusPoints}|{_timesCompleted}|{_targetAmount}";
+    }
+    public override string Display()
+    {
+        return $"{_goalName} ({_goalDescription}) -- Currently completed: {_timesCompleted}/{_targetAmount}";
+    }
+    public override bool CheckComplete()
+    {
+        return _isComplete;
     }
 }

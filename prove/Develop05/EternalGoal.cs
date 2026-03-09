@@ -4,7 +4,7 @@ public class EternalGoal : Goal
     {
         
     }
-    public override int RecordEvent() //TODO
+    public override int RecordEvent()
     {
         return _goalValue;
     }
@@ -15,5 +15,13 @@ public class EternalGoal : Goal
     public override string GetStringRepresentation()
     {
         return $"EternalGoal:{_goalName}|{_goalDescription}|{_goalValue}";
+    }
+    public override string Display()
+    {
+        return $"{_goalName} ({_goalDescription})";
+    }
+    public override bool CheckComplete()
+    {
+        return false;
     }
 }

@@ -1,0 +1,3 @@
+0
+SimpleGoal:Thing|This thing|100|False
+EternalGoal:Eternal one|The eternal goal one|20

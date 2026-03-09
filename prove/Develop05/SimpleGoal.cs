@@ -9,7 +9,7 @@ public class SimpleGoal : Goal
     {
         _isComplete = isComplete;
     }
-    public override int RecordEvent() //TODO
+    public override int RecordEvent()
     {
         IsComplete();
         return _goalValue;
@@ -21,5 +21,13 @@ public class SimpleGoal : Goal
     public override string GetStringRepresentation()
     {
         return $"SimpleGoal:{_goalName}|{_goalDescription}|{_goalValue}|{_isComplete}";
+    }
+    public override string Display()
+    {
+        return $"{_goalName} ({_goalDescription})";
+    }
+    public override bool CheckComplete()
+    {
+        return _isComplete;
     }
 }

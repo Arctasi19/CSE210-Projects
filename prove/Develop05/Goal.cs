@@ -12,8 +12,10 @@ public abstract class Goal
     public abstract void IsComplete();
     public abstract int RecordEvent();
     public abstract string GetStringRepresentation();
-    public virtual string GetInfo()
+    public abstract string Display();
+    public abstract bool CheckComplete();
+    public virtual string GetName()
     {
-        return $"{_goalName} : {_goalDescription}";
+        return $"{_goalName}";
     }
 }
