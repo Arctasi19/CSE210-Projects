@@ -2,7 +2,7 @@ public class Thermostat : Device //INCOMPLETE
 {
     private int _currentTemp;
     private int _desiredTemp;
-    public Thermostat(string name, string desc, bool active) : base(name, desc, active)
+    public Thermostat(string name, string desc) : base(name, desc)
     {
         
     }
@@ -21,6 +21,6 @@ public class Thermostat : Device //INCOMPLETE
     }
     public override string GetStringRepresentation()
     {
-        return $"SmartLight|{_deviceName}|{_deviceDesc}|{_isActive}|{_currentTemp}";
+        return $"Thermostat|{_deviceName}|{_deviceDesc}|{_isActive}|{_currentTemp}";
     }
 }

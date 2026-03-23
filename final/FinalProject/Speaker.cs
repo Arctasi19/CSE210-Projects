@@ -1,7 +1,7 @@
 public class Speaker : Device //INCOMPLETE
 {
     private int _volume;
-    public Speaker(string name, string desc, bool active) : base(name, desc, active)
+    public Speaker(string name, string desc) : base(name, desc)
     {
         
     }
@@ -20,6 +20,6 @@ public class Speaker : Device //INCOMPLETE
     }
     public override string GetStringRepresentation()
     {
-        return $"SmartLight|{_deviceName}|{_deviceDesc}|{_isActive}|{_volume}";
+        return $"Speaker|{_deviceName}|{_deviceDesc}|{_isActive}|{_volume}";
     }
 }

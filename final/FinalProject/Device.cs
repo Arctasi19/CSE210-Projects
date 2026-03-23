@@ -14,9 +14,13 @@ public abstract class Device //INCOMPLETE
         _deviceDesc = desc;
         _isActive = activity;
     }
-    public virtual void ToggleActive()
+    public virtual void ActiveOn()
     {
-        
+        _isActive = true;
+    }
+    public virtual void ActiveOff()
+    {
+        _isActive = false;
     }
     public abstract string GetStatus();
     public virtual string GetInfo()

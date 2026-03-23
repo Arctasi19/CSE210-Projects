@@ -1,3 +1,5 @@
+using System.Threading.Channels;
+
 public class Room //INCOMPLETE
 {
     private List<Device> _devices = new List<Device>();
@@ -8,34 +10,161 @@ public class Room //INCOMPLETE
     }
     public void NewDevice()
     {
-         
+        List<String> affirmative = ["yes", "y"];
+        while (true)
+        {
+            Console.WriteLine("Devices:\n1. SmartLight\n2. Fan\n3. Speaker\n4. Thermostat");
+            int deviceCreate = GetInt("What type of device, by number, would you like to create?");
+            if (deviceCreate >= 1 && deviceCreate <= 4)
+            {
+                if (deviceCreate == 1) //Light
+                {
+                    Console.WriteLine("Creating a new SmartLight!");
+                    string name = GetStr("What is this Light's name?");
+                    string desc = GetStr("What is a short description for this light?");
+
+                    string dimmableStr = GetStr("Is this light dimmable? (yes or no)");
+                    bool dimmable = false;
+                    if (affirmative.Contains(dimmableStr.ToLower()))
+                    {
+                        dimmable = true;
+                    }
+
+                    string colorStr = GetStr("Is this light dimmable? (yes or no)");
+                    bool colorChangeable = false;
+                    if (affirmative.Contains(colorStr.ToLower()))
+                    {
+                        colorChangeable = true;
+                    }
+                    
+                    SmartLight light = new SmartLight(name, desc, dimmable, colorChangeable);
+                    _devices.Add(light);
+                    Console.WriteLine($"Smartlight {name} added to {_roomName}.");
+                    break;
+                }
+                else if (deviceCreate == 2) //Fan
+                {
+                    Console.WriteLine("Creating a new Fan!");
+                    string name = GetStr("What is this Fan's name?");
+                    string desc = GetStr("What is a short description for this Fan?");
+
+                    Fan fan = new Fan(name, desc);
+                    _devices.Add(fan);
+                    Console.WriteLine($"Fan {name} added to {_roomName}.");
+                    break;
+                }
+                else if (deviceCreate == 3) //Speaker
+                {
+                    Console.WriteLine("Creating a new Speaker!");
+                    string name = GetStr("What is this Speakers's name?");
+                    string desc = GetStr("What is a short description for this Speaker?");
+
+                    Speaker speaker = new Speaker(name, desc);
+                    _devices.Add(speaker);
+                    Console.WriteLine($"Speaker {name} added to {_roomName}.");
+                    break;
+                }
+                else if (deviceCreate == 4) //Thermostat
+                {
+                    Console.WriteLine("Creating a new Thermostat!");
+                    string name = GetStr("What is this Thermostat's name?");
+                    string desc = GetStr("What is a short description for this Thermostat?");
+
+                    Thermostat thermostat = new Thermostat(name, desc);
+                    _devices.Add(thermostat);
+                    Console.WriteLine($"Thermostat {name} added to {_roomName}.");
+                    break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid device number.");
+                Thread.Sleep(2000);
+            }
+        }
     }
     public void DeleteDevice()
     {
-        
+        ListDevices();
+        while (true)
+        {
+            int deletionIndex = GetInt("Which device, by number, would you like to delete?");
+            if (deletionIndex <= _devices.Count())
+            {
+                _devices.RemoveAt(deletionIndex - 1);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("please enter a valid device number.");
+                Thread.Sleep(2000);
+            }
+        }
     }
-    public void DimAll()
+    public void ListDevices()
     {
-        
+        Console.WriteLine($"Devices in {_roomName}: ");
+        for (int i = 0; i < _devices.Count(); i++)
+        {
+            Console.WriteLine($"{i+1}. {_devices[i].GetInfo()}");
+        }
+        Console.WriteLine();
+    }
+    public void AddDevice(Device device)
+    {
+        _devices.Add(device);
     }
     public void AllOff()
     {
-        
+        foreach(Device device in _devices)
+        {
+            device.ActiveOff();
+        }
     }
     public void AllLightsOff()
     {
-        
+        foreach(Device device in _devices)
+        {
+            if (device is SmartLight)
+            {
+                device.ActiveOff();
+            }
+        }
     }
     public void AllLightsOn()
     {
-        
+        foreach(Device device in _devices)
+        {
+            if (device is SmartLight)
+            {
+                device.ActiveOn();
+            }
+        }
     }
     public string GetInfo()
     {
-        return "chacha";
+        return $"{_roomName} ({_devices.Count} devices)";
+    }
+    public List<Device> GetDevices()
+    {
+        return _devices;
     }
     public string GetStringRepresentation()
     {
-        return "chacha";
+        return $"ROOM|{_roomName}";
+    }
+    public int GetInt(string prompt)
+    {
+        Console.WriteLine(prompt);
+        Console.Write("> ");
+        int userInput = int.Parse(Console.ReadLine());
+        return userInput;
+    }
+    public string GetStr(string prompt)
+    {
+        Console.WriteLine(prompt);
+        Console.Write("> ");
+        string userInput = Console.ReadLine();
+        return userInput;
     }
 }

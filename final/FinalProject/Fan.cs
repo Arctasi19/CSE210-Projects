@@ -1,7 +1,7 @@
 public class Fan : Device //INCOMPLETE
 {
     private int _speed;
-    public Fan(string name, string desc, bool active) : base(name, desc, active)
+    public Fan(string name, string desc) : base(name, desc)
     {
         
     }
@@ -20,6 +20,6 @@ public class Fan : Device //INCOMPLETE
     }
     public override string GetStringRepresentation()
     {
-        return $"SmartLight|{_deviceName}|{_deviceDesc}|{_isActive}|{_speed}";
+        return $"Fan|{_deviceName}|{_deviceDesc}|{_isActive}|{_speed}";
     }
 }

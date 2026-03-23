@@ -4,7 +4,7 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
     private bool _canChangeColor;
     private int _brightness = 0;
     private string _color = "white";
-    public SmartLight(string name, string desc, bool active, bool canDim, bool canChangeColor) : base(name, desc, active)
+    public SmartLight(string name, string desc, bool canDim, bool canChangeColor) : base(name, desc)
     {
         _canChangeColor = canChangeColor;
         _canDim = canDim;
