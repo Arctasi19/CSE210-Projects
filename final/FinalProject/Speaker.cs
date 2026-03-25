@@ -16,7 +16,7 @@ public class Speaker : Device //INCOMPLETE
     public override string GetStatus()
     {
         string status = _isActive? "ON" : "OFF";
-        return $"{_deviceName}" + status + $"Current Set Volume: {_volume}";
+        return $"{_deviceName} " + status + $" Current Set Volume: {_volume}";
     }
     public override string GetStringRepresentation()
     {
@@ -24,10 +24,10 @@ public class Speaker : Device //INCOMPLETE
     }
     public override void DeviceUI()
     {
-        Console.Clear();
         int userChoice = -1;
         while (userChoice != 8)
         {
+            Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine($"Device: {GetInfo()}");
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("1. Status");
@@ -40,15 +40,18 @@ public class Speaker : Device //INCOMPLETE
 
             if (userChoice == 1) //Get Status
             {
+                Console.Clear();
                 Console.WriteLine(GetStatus());
             }
             else if (userChoice == 2) //Turn On
             {
                 ActiveOn();
+                Console.Clear();
             }
             else if (userChoice == 3) //Turn Off
             {
                 ActiveOff();
+                Console.Clear();
             }
             else if (userChoice == 4) //Set Volume
             {
@@ -58,6 +61,7 @@ public class Speaker : Device //INCOMPLETE
                     if (volume <= 100 && volume>= 1)
                     {
                         SetVolume(volume);
+                        Console.Clear();
                         break;
                     }
                     else
@@ -68,6 +72,8 @@ public class Speaker : Device //INCOMPLETE
             }
             else if (userChoice == 5) //Go Back
             {
+                Console.Clear();
+                Console.WriteLine("Returning to Room Menu.");
                 break;
             }
         }

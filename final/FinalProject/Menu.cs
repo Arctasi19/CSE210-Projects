@@ -12,6 +12,7 @@ public class Menu //INCOMPLETE
         int userChoice = -1;
         while (userChoice != 8) 
         {
+            Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("\nOptions:");
             Console.WriteLine("1. Create New Room");
             Console.WriteLine("2. List Rooms");
@@ -59,6 +60,11 @@ public class Menu //INCOMPLETE
             {
                 Console.WriteLine("Goodbye!");
                 break;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Please enter a valid number option.");
             }
         }
     }

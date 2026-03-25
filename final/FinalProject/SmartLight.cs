@@ -52,7 +52,7 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
         {
             status += $" [Color: {_color}]";
         }
-        return $"{_deviceName}" + status;
+        return $"{_deviceName} " + status;
     }
     public override string GetInfo()
     {
@@ -73,10 +73,10 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
     }
     public override void DeviceUI()
     {
-        Console.Clear();
         int userChoice = -1;
         while (userChoice != 8)
         {
+            Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine($"Device: {GetInfo()}");
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("1. Status");
@@ -96,15 +96,18 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
 
             if (userChoice == 1) //Get Status
             {
+                Console.Clear();
                 Console.WriteLine(GetStatus());
             }
             else if (userChoice == 2) //Turn On
             {
                 ActiveOn();
+                Console.Clear();
             }
             else if (userChoice == 3) //Turn Off
             {
                 ActiveOff();
+                Console.Clear();
             }
             else if (userChoice == 4 && _canChangeColor == true) //Set Color
             {
@@ -115,6 +118,7 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
                     if (colorsOptions.Contains(color.ToLower()))
                     {
                         SetColor(color);
+                        Console.Clear();
                         break;
                     }
                     else
@@ -131,6 +135,7 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
                     if (luminosity <= 100 && luminosity>= 1)
                     {
                         SetBrightness(luminosity);
+                        Console.Clear();
                         break;
                     }
                     else
@@ -141,6 +146,8 @@ public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
             }
             else if (userChoice == 6) //Go Back
             {
+                Console.Clear();
+                Console.WriteLine("Returning to Room Menu.");
                 break;
             }
         }

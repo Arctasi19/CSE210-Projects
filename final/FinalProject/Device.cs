@@ -31,10 +31,22 @@ public abstract class Device //INCOMPLETE
     public abstract void DeviceUI();
     public int GetInt(string prompt)
     {
-        Console.WriteLine(prompt);
-        Console.Write("> ");
-        int userInput = int.Parse(Console.ReadLine());
-        return userInput;
+        while (true)
+        {
+            int number;
+            Console.WriteLine(prompt);
+            Console.Write("> ");
+            string userInput = Console.ReadLine();
+            bool success = int.TryParse(userInput, out number);
+            if (success)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Please enter only digits");
+            }
+        }
     }
     public string GetStr(string prompt)
     {

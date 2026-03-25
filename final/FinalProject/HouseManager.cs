@@ -10,6 +10,7 @@ public class HouseManager //INCOMPLETE
     }
     public void ListRooms()
     {
+        Console.Clear();
         Console.WriteLine("Rooms: ");
         for (int i = 0; i < _rooms.Count(); i++)
         {
@@ -24,24 +25,37 @@ public class HouseManager //INCOMPLETE
     public void NewRoom()
     {
         _rooms.Add(new Room(GetStr("What is the name of this new room? ")));
+        Console.Clear();
+        Console.WriteLine("Room Created.");
     }
     public void DeleteRoom()
     {
-        ListRooms();
-        while (true)
+        if (_rooms.Count() > 0)
         {
-            int deletionIndex = GetInt("Which room, by number, would you like to delete?");
-            if (deletionIndex <= _rooms.Count())
+            ListRooms();
+            while (true)
             {
-                _rooms.RemoveAt(deletionIndex - 1);
-                break;
-            }
-            else
-            {
-                Console.WriteLine("please enter a valid room number.");
-                Thread.Sleep(2000);
+                int deletionIndex = GetInt("Which room, by number, would you like to delete?");
+                if (deletionIndex <= _rooms.Count())
+                {
+                    _rooms.RemoveAt(deletionIndex - 1);
+                    Console.Clear();
+                    Console.WriteLine("Room Deleted");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("please enter a valid room number.");
+                    Thread.Sleep(2000);
+                }
             }
         }
+        else 
+        {
+            Console.Clear();
+            Console.WriteLine("You have no rooms to delete.");
+        }
+        
     }
     public void SaveHouse(string fileName)
     {
@@ -56,6 +70,8 @@ public class HouseManager //INCOMPLETE
                 }
             }
         }
+        Console.Clear();
+        Console.WriteLine("House and settings saved.");
     }
     public void LoadHouse(string fileName)
     {
@@ -107,6 +123,8 @@ public class HouseManager //INCOMPLETE
                 }
             }
         }
+        Console.Clear();
+        Console.WriteLine("House and settings Loaded from file.");
     }
     public void AwayMode()
     {
@@ -116,78 +134,113 @@ public class HouseManager //INCOMPLETE
             _rooms[r].AllOff();
         }
         Thread.Sleep(2000);
+        Console.Clear();
         Console.WriteLine("All devices now off for Away Mode.");
     }
     public void RoomUI()
     {
-        Console.Clear();
-        ListRooms();
-        while (true)
+        if (_rooms.Count() > 0)
         {
-            int roomSelect = GetInt("Which room, by number, would you like to access?");
-            if (roomSelect <= _rooms.Count())
+            ListRooms();
+            while (true)
             {
-                Room selectedRoom = _rooms[roomSelect-1];
-
-                int userChoice = -1;
-                while (userChoice != 8)
+                int roomSelect = GetInt("Which room, by number, would you like to access?");
+                if (roomSelect <= _rooms.Count() && roomSelect > 0)
                 {
-                    Console.WriteLine($"Room: {selectedRoom.GetInfo()}");
-                    Console.WriteLine("\nWhat would you like to do?");
-                    Console.WriteLine("1. Add New Device");
-                    Console.WriteLine("2. Delete Device");
-                    Console.WriteLine("3. List Devices");
-                    Console.WriteLine("4. Access a Device");
-                    Console.WriteLine("5. Turn All Room Devices Off");
-                    Console.WriteLine("6. Turn All Room Lights Off");
-                    Console.WriteLine("7. Turn all Room Lights On");
-                    Console.WriteLine("8. Go back to the Main Menu");
+                    Console.Clear();
+                    Room selectedRoom = _rooms[roomSelect-1];
 
-                    userChoice = GetInt("Select a choice from the menu:"); //retrieves user input
+                    int userChoice = -1;
+                    while (userChoice != 8)
+                    {
+                        Console.WriteLine("----------------------------------------------------------");
+                        Console.WriteLine($"Room: {selectedRoom.GetInfo()}");
+                        Console.WriteLine("\nWhat would you like to do?");
+                        Console.WriteLine("1. Add New Device");
+                        Console.WriteLine("2. Delete Device");
+                        Console.WriteLine("3. List Devices");
+                        Console.WriteLine("4. Access a Device");
+                        Console.WriteLine("5. Turn All Room Devices Off");
+                        Console.WriteLine("6. Turn All Room Lights Off");
+                        Console.WriteLine("7. Turn all Room Lights On");
+                        Console.WriteLine("8. Go back to the Main Menu");
 
-                    if (userChoice == 1) //Create a new device
-                    {
-                        selectedRoom.NewDevice();
-                    }
-                    else if (userChoice == 2) //Delete a device
-                    {
-                        selectedRoom.DeleteDevice();
-                    }
-                    else if (userChoice == 3) //List all devices in Room
-                    {
-                        selectedRoom.ListDevices();
-                    }
-                    else if (userChoice == 4) //Access a device menu
-                    {
-                        selectedRoom.DeviceAccess();
-                    }
-                    else if (userChoice == 5) //Turn all devices off
-                    {
-                        selectedRoom.AllOff();
-                    }
-                    else if (userChoice == 6) //All lights off
-                    {
-                        selectedRoom.AllLightsOff();
-                    }
-                    else if (userChoice == 7) //All lights on
-                    {
-                        selectedRoom.AllLightsOn();
+                        userChoice = GetInt("Select a choice from the menu:"); //retrieves user input
+
+                        if (userChoice == 1) //Create a new device
+                        {
+                            selectedRoom.NewDevice();
+                        }
+                        else if (userChoice == 2) //Delete a device
+                        {
+                            selectedRoom.DeleteDevice();
+                        }
+                        else if (userChoice == 3) //List all devices in Room
+                        {
+                            selectedRoom.ListDevices();
+                        }
+                        else if (userChoice == 4) //Access a device menu
+                        {
+                            selectedRoom.DeviceAccess();
+                        }
+                        else if (userChoice == 5) //Turn all devices off
+                        {
+                            selectedRoom.AllOff();
+                        }
+                        else if (userChoice == 6) //All lights off
+                        {
+                            selectedRoom.AllLightsOff();
+                        }
+                        else if (userChoice == 7) //All lights on
+                        {
+                            selectedRoom.AllLightsOn();
+                        }
+                        else if (userChoice == 8)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Returning To Main Menu.");
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Please enter a valid menu option.");
+                        }
                     }
                 }
+                else
+                {
+                    Console.WriteLine("please enter a valid room option.");
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                }
+                break;
             }
-            else
-            {
-                Console.WriteLine("please enter a valid room option.");
-                Thread.Sleep(2000);
-            }
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("You currently have no rooms to access.");
         }
     }
     public int GetInt(string prompt)
     {
-        Console.WriteLine(prompt);
-        Console.Write("> ");
-        int userInput = int.Parse(Console.ReadLine());
-        return userInput;
+        while (true)
+        {
+            int number;
+            Console.WriteLine(prompt);
+            Console.Write("> ");
+            string userInput = Console.ReadLine();
+            bool success = int.TryParse(userInput, out number);
+            if (success)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Please enter only digits");
+            }
+        }
     }
     public string GetStr(string prompt)
     {

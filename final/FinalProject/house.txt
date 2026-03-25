@@ -1,0 +1,6 @@
+ROOM|living
+Thermostat|Beckas Thermostat|Arlo wall thermo|False|0
+Speaker|Bekas speaker|Bose wall block|False|32
+ROOM|bed
+ROOM|pantry
+Fan|pantry fan|for some reason|False|0

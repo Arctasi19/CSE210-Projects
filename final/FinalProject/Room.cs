@@ -40,6 +40,7 @@ public class Room //INCOMPLETE
                     
                     SmartLight light = new SmartLight(name, desc, dimmable, colorChangeable);
                     _devices.Add(light);
+                    Console.Clear();
                     Console.WriteLine($"Smartlight {name} added to {_roomName}.");
                     break;
                 }
@@ -51,6 +52,7 @@ public class Room //INCOMPLETE
 
                     Fan fan = new Fan(name, desc);
                     _devices.Add(fan);
+                    Console.Clear();
                     Console.WriteLine($"Fan {name} added to {_roomName}.");
                     break;
                 }
@@ -62,6 +64,7 @@ public class Room //INCOMPLETE
 
                     Speaker speaker = new Speaker(name, desc);
                     _devices.Add(speaker);
+                    Console.Clear();
                     Console.WriteLine($"Speaker {name} added to {_roomName}.");
                     break;
                 }
@@ -73,38 +76,50 @@ public class Room //INCOMPLETE
 
                     Thermostat thermostat = new Thermostat(name, desc);
                     _devices.Add(thermostat);
+                    Console.Clear();
                     Console.WriteLine($"Thermostat {name} added to {_roomName}.");
                     break;
                 }
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Please enter a valid device number.");
-                Thread.Sleep(2000);
             }
         }
     }
     public void DeleteDevice()
     {
-        Console.Clear();
-        ListDevices();
-        while (true)
+        if (_devices.Count() > 0)
         {
-            int deletionIndex = GetInt("Which device, by number, would you like to delete?");
-            if (deletionIndex <= _devices.Count())
+            Console.Clear();
+            ListDevices();
+            while (true)
             {
-                _devices.RemoveAt(deletionIndex - 1);
-                break;
+                int deletionIndex = GetInt("Which device, by number, would you like to delete?");
+                if (deletionIndex <= _devices.Count())
+                {
+                    _devices.RemoveAt(deletionIndex - 1);
+                    Console.Clear();
+                    Console.WriteLine("Device deleted.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid device number.");
+                    Thread.Sleep(2000);
+                }
             }
-            else
-            {
-                Console.WriteLine("please enter a valid device number.");
-                Thread.Sleep(2000);
-            }
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("You have no devices to delete.");
         }
     }
     public void ListDevices()
     {
+        Console.Clear();
         Console.WriteLine($"Devices in {_roomName}: ");
         for (int i = 0; i < _devices.Count(); i++)
         {
@@ -115,6 +130,8 @@ public class Room //INCOMPLETE
     public void AddDevice(Device device)
     {
         _devices.Add(device);
+        Console.Clear();
+        Console.WriteLine("Device Added.");
     }
     public void AllOff()
     {
@@ -132,6 +149,8 @@ public class Room //INCOMPLETE
                 device.ActiveOff();
             }
         }
+        Console.Clear();
+        Console.WriteLine("All Lights are now Off.");
     }
     public void AllLightsOn()
     {
@@ -142,6 +161,8 @@ public class Room //INCOMPLETE
                 device.ActiveOn();
             }
         }
+        Console.Clear();
+        Console.WriteLine("All Lights in this room are now On.");
     }
     public string GetInfo()
     {
@@ -157,31 +178,52 @@ public class Room //INCOMPLETE
     }
     public void DeviceAccess()
     {
-        while (true)
+        if (_devices.Count() > 0)
+        {
+            while (true)
+            {
+                Console.Clear();
+                ListDevices();
+                int deviceSelect = GetInt("Which device, by number, would you like to access?");
+                if (deviceSelect <= _devices.Count() && deviceSelect > 0)
+                {
+                    Console.Clear();
+                    Device selectedDevice = _devices[deviceSelect-1];
+                    Console.Clear();
+                    _devices[deviceSelect-1].DeviceUI();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("please enter a valid device option.");
+                    Thread.Sleep(2000);
+                }
+            }
+        }
+        else
         {
             Console.Clear();
-            ListDevices();
-
-            int deviceSelect = GetInt("Which device, by number, would you like to access?");
-            if (deviceSelect <= _devices.Count())
-            {
-                Device selectedDevice = _devices[deviceSelect-1];
-                _devices[deviceSelect-1].DeviceUI();
-                break;
-            }
-            else
-            {
-                Console.WriteLine("please enter a valid device option.");
-                Thread.Sleep(2000);
-            }
+            Console.WriteLine("This room has no devices to access.");
         }
     }
     public int GetInt(string prompt)
     {
-        Console.WriteLine(prompt);
-        Console.Write("> ");
-        int userInput = int.Parse(Console.ReadLine());
-        return userInput;
+        while (true)
+        {
+            int number;
+            Console.WriteLine(prompt);
+            Console.Write("> ");
+            string userInput = Console.ReadLine();
+            bool success = int.TryParse(userInput, out number);
+            if (success)
+            {
+                return number;
+            }
+            else
+            {
+                Console.WriteLine("Please enter only digits");
+            }
+        }
     }
     public string GetStr(string prompt)
     {
