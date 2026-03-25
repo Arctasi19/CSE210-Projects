@@ -28,4 +28,19 @@ public abstract class Device //INCOMPLETE
         return $"{_deviceName}: {_deviceDesc}";
     }
     public abstract string GetStringRepresentation();
+    public abstract void DeviceUI();
+    public int GetInt(string prompt)
+    {
+        Console.WriteLine(prompt);
+        Console.Write("> ");
+        int userInput = int.Parse(Console.ReadLine());
+        return userInput;
+    }
+    public string GetStr(string prompt)
+    {
+        Console.WriteLine(prompt);
+        Console.Write("> ");
+        string userInput = Console.ReadLine();
+        return userInput;
+    }
 }

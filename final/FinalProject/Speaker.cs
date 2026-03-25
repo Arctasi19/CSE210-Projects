@@ -22,4 +22,54 @@ public class Speaker : Device //INCOMPLETE
     {
         return $"Speaker|{_deviceName}|{_deviceDesc}|{_isActive}|{_volume}";
     }
+    public override void DeviceUI()
+    {
+        Console.Clear();
+        int userChoice = -1;
+        while (userChoice != 8)
+        {
+            Console.WriteLine($"Device: {GetInfo()}");
+            Console.WriteLine("\nWhat would you like to do?");
+            Console.WriteLine("1. Status");
+            Console.WriteLine("2. Turn On");
+            Console.WriteLine("3. Turn Off");
+            Console.WriteLine("4. Set Desired Volume");
+            Console.WriteLine("5. Go Back To Room Menu");
+
+            userChoice = GetInt("Select a choice from the menu:"); //retrieves user input
+
+            if (userChoice == 1) //Get Status
+            {
+                Console.WriteLine(GetStatus());
+            }
+            else if (userChoice == 2) //Turn On
+            {
+                ActiveOn();
+            }
+            else if (userChoice == 3) //Turn Off
+            {
+                ActiveOff();
+            }
+            else if (userChoice == 4) //Set Volume
+            {
+                while (true)
+                {
+                    int volume = GetInt("What volume would you like to set this speaker to? ");
+                    if (volume <= 100 && volume>= 1)
+                    {
+                        SetVolume(volume);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid volume % between 1 and 100");
+                    }
+                }
+            }
+            else if (userChoice == 5) //Go Back
+            {
+                break;
+            }
+        }
+    }
 }

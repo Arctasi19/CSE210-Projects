@@ -17,6 +17,10 @@ public class HouseManager //INCOMPLETE
         }
         Console.WriteLine();
     }
+    public List<Room> GetRooms()
+    {
+        return _rooms;
+    }
     public void NewRoom()
     {
         _rooms.Add(new Room(GetStr("What is the name of this new room? ")));
@@ -113,6 +117,70 @@ public class HouseManager //INCOMPLETE
         }
         Thread.Sleep(2000);
         Console.WriteLine("All devices now off for Away Mode.");
+    }
+    public void RoomUI()
+    {
+        Console.Clear();
+        ListRooms();
+        while (true)
+        {
+            int roomSelect = GetInt("Which room, by number, would you like to access?");
+            if (roomSelect <= _rooms.Count())
+            {
+                Room selectedRoom = _rooms[roomSelect-1];
+
+                int userChoice = -1;
+                while (userChoice != 8)
+                {
+                    Console.WriteLine($"Room: {selectedRoom.GetInfo()}");
+                    Console.WriteLine("\nWhat would you like to do?");
+                    Console.WriteLine("1. Add New Device");
+                    Console.WriteLine("2. Delete Device");
+                    Console.WriteLine("3. List Devices");
+                    Console.WriteLine("4. Access a Device");
+                    Console.WriteLine("5. Turn All Room Devices Off");
+                    Console.WriteLine("6. Turn All Room Lights Off");
+                    Console.WriteLine("7. Turn all Room Lights On");
+                    Console.WriteLine("8. Go back to the Main Menu");
+
+                    userChoice = GetInt("Select a choice from the menu:"); //retrieves user input
+
+                    if (userChoice == 1) //Create a new device
+                    {
+                        selectedRoom.NewDevice();
+                    }
+                    else if (userChoice == 2) //Delete a device
+                    {
+                        selectedRoom.DeleteDevice();
+                    }
+                    else if (userChoice == 3) //List all devices in Room
+                    {
+                        selectedRoom.ListDevices();
+                    }
+                    else if (userChoice == 4) //Access a device menu
+                    {
+                        selectedRoom.DeviceAccess();
+                    }
+                    else if (userChoice == 5) //Turn all devices off
+                    {
+                        selectedRoom.AllOff();
+                    }
+                    else if (userChoice == 6) //All lights off
+                    {
+                        selectedRoom.AllLightsOff();
+                    }
+                    else if (userChoice == 7) //All lights on
+                    {
+                        selectedRoom.AllLightsOn();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("please enter a valid room option.");
+                Thread.Sleep(2000);
+            }
+        }
     }
     public int GetInt(string prompt)
     {

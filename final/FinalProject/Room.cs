@@ -10,6 +10,7 @@ public class Room //INCOMPLETE
     }
     public void NewDevice()
     {
+        Console.Clear();
         List<String> affirmative = ["yes", "y"];
         while (true)
         {
@@ -30,7 +31,7 @@ public class Room //INCOMPLETE
                         dimmable = true;
                     }
 
-                    string colorStr = GetStr("Is this light dimmable? (yes or no)");
+                    string colorStr = GetStr("Is this light color changeable? (yes or no)");
                     bool colorChangeable = false;
                     if (affirmative.Contains(colorStr.ToLower()))
                     {
@@ -85,6 +86,7 @@ public class Room //INCOMPLETE
     }
     public void DeleteDevice()
     {
+        Console.Clear();
         ListDevices();
         while (true)
         {
@@ -152,6 +154,27 @@ public class Room //INCOMPLETE
     public string GetStringRepresentation()
     {
         return $"ROOM|{_roomName}";
+    }
+    public void DeviceAccess()
+    {
+        while (true)
+        {
+            Console.Clear();
+            ListDevices();
+
+            int deviceSelect = GetInt("Which device, by number, would you like to access?");
+            if (deviceSelect <= _devices.Count())
+            {
+                Device selectedDevice = _devices[deviceSelect-1];
+                _devices[deviceSelect-1].DeviceUI();
+                break;
+            }
+            else
+            {
+                Console.WriteLine("please enter a valid device option.");
+                Thread.Sleep(2000);
+            }
+        }
     }
     public int GetInt(string prompt)
     {

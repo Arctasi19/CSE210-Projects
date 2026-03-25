@@ -22,4 +22,54 @@ public class Fan : Device //INCOMPLETE
     {
         return $"Fan|{_deviceName}|{_deviceDesc}|{_isActive}|{_speed}";
     }
+    public override void DeviceUI()
+    {
+        Console.Clear();
+        int userChoice = -1;
+        while (userChoice != 8)
+        {
+            Console.WriteLine($"Device: {GetInfo()}");
+            Console.WriteLine("\nWhat would you like to do?");
+            Console.WriteLine("1. Status");
+            Console.WriteLine("2. Turn On");
+            Console.WriteLine("3. Turn Off");
+            Console.WriteLine("4. Set Desired Temperature");
+            Console.WriteLine("5. Go Back To Room Menu");
+
+            userChoice = GetInt("Select a choice from the menu:"); //retrieves user input
+
+            if (userChoice == 1) //Get Status
+            {
+                Console.WriteLine(GetStatus());
+            }
+            else if (userChoice == 2) //Turn On
+            {
+                ActiveOn();
+            }
+            else if (userChoice == 3) //Turn Off
+            {
+                ActiveOff();
+            }
+            else if (userChoice == 4) //Set Speed
+            {
+                while (true)
+                {
+                    int speed = GetInt("What speed setting would you like this fan to be? (1 2 3)");
+                    if (speed <= 3 && speed >= 1)
+                    {
+                        SetSpeed(speed);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid speed setting from 1 to 3");
+                    }
+                }
+            }
+            else if (userChoice == 5) //Go Back
+            {
+                break;
+            }
+        }
+    }
 }
