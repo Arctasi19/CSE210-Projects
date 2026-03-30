@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-public class HouseManager //INCOMPLETE
+public class HouseManager
 {
     private List<Room> _rooms = new List<Room>();
     public HouseManager()

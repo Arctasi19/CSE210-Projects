@@ -1,4 +1,4 @@
-public abstract class Device //INCOMPLETE
+public abstract class Device 
 {
     protected string _deviceName;
     protected string _deviceDesc;

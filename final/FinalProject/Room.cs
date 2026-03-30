@@ -1,6 +1,6 @@
 using System.Threading.Channels;
 
-public class Room //INCOMPLETE
+public class Room 
 {
     private List<Device> _devices = new List<Device>();
     private string _roomName;

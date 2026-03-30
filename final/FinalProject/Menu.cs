@@ -1,4 +1,4 @@
-public class Menu //INCOMPLETE
+public class Menu 
 {
     private HouseManager HM = new HouseManager();
     public Menu()

@@ -1,4 +1,4 @@
-public class Thermostat : Device //INCOMPLETE
+public class Thermostat : Device 
 {
     private int _currentTemp;
     private int _desiredTemp;

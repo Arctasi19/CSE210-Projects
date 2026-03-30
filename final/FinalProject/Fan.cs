@@ -1,4 +1,4 @@
-public class Fan : Device //INCOMPLETE
+public class Fan : Device 
 {
     private int _speed;
     public Fan(string name, string desc) : base(name, desc)

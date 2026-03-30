@@ -1,4 +1,4 @@
-public class Speaker : Device //INCOMPLETE
+public class Speaker : Device 
 {
     private int _volume;
     public Speaker(string name, string desc) : base(name, desc)

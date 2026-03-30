@@ -1,4 +1,4 @@
-public class SmartLight : Device, IDimmable, IColorChangeable //INCOMPLETE
+public class SmartLight : Device, IDimmable, IColorChangeable 
 {
     private bool _canDim;
     private bool _canChangeColor;

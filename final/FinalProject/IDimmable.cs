@@ -1,4 +1,4 @@
-public interface IDimmable //Complete?
+public interface IDimmable 
 {
     void SetBrightness(int level);
 }
