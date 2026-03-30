@@ -162,7 +162,7 @@ public class HouseManager
                         Console.WriteLine("4. Access a Device");
                         Console.WriteLine("5. Turn All Room Devices Off");
                         Console.WriteLine("6. Turn All Room Lights Off");
-                        Console.WriteLine("7. Turn all Room Lights On");
+                        Console.WriteLine("7. Turn All Room Lights On");
                         Console.WriteLine("8. Go back to the Main Menu");
 
                         userChoice = GetInt("Select a choice from the menu:"); //retrieves user input

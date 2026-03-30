@@ -59,7 +59,7 @@ public class Room
                 else if (deviceCreate == 3) //Speaker
                 {
                     Console.WriteLine("Creating a new Speaker!");
-                    string name = GetStr("What is this Speakers's name?");
+                    string name = GetStr("What is this Speaker's name?");
                     string desc = GetStr("What is a short description for this Speaker?");
 
                     Speaker speaker = new Speaker(name, desc);
